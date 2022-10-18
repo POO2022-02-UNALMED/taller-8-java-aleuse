@@ -1,42 +1,35 @@
 package futbol;
 
-public class Jugador extends Futbolista{
+public class Jugador extends Futbolista {
+    public short golesMarcados;
+    public byte dorsal;
 
-	public short golesMarcados;
-	public byte dorsal;
-	
-	
-	
-	
-	// Base
-	public Jugador(){
-		super();
-	}
+    public Jugador(String nombre,int edad, String posicion, short goles, byte dorsal){
+        super(nombre,edad,posicion);
+        golesMarcados = goles;
+        this.dorsal = dorsal;
+    }
 
-	//Parametrico
-	public Jugador(String nombre, int edad, String posicion, short golesMarcados, byte dorsal){
-		super(nombre, edad, posicion);
-		this.golesMarcados = golesMarcados;
-		this.dorsal = dorsal;		
-	}
-	
-    // Impresion
-	public static void main(String args[]) {
-				System.out.println("El futbolista");	
-	}
-	// Getters
-	public short getGolesMarcados(){
-		return this.golesMarcados;
-	}
-	public byte getDorsal(){
-		return this.dorsal;
-	}
-	// interfaz comparable
-	@Override
-	public int compareTo(Futbolista arg0) {
-		int valor = 0;
-		valor = ( this.getEdad() - arg0.getEdad() );
-		return Math.abs(valor);
-	}			
+    public Jugador (){
+        super();
+        golesMarcados = 289;
+        dorsal = 7;
+    }
+
+    public int compareTo(Object elemento) {
+        Jugador jugador = (Jugador) elemento;
+        int abs = Math.abs(this.getEdad() - jugador.getEdad());
+        return abs;
+    }
+
+    @Override
+    public boolean jugarConLasManos() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "El futbolista " + getNombre() + " tiene " + getEdad() + ", y juega de " + getPosicion() +
+                " con el dorsal " + dorsal + ". Ha marcado " + golesMarcados;
+    }
 }
-

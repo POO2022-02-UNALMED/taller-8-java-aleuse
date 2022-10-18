@@ -1,45 +1,54 @@
 package futbol;
 
-public abstract class Futbolista implements Comparable<Futbolista>{
+public abstract class Futbolista implements Comparable<Object>{
+    private String nombre;
+    private int edad;
+    private final String posicion ;
 
-	private static String nombre;
-	private static int edad;
-	private  static  String posicion;
-	
-	public Futbolista(String nombre, int edad, String posicion) {
-		this.nombre = nombre;
-		this.edad = edad;
-		this.posicion = posicion;
-
-	}
-
-	public Futbolista() {
+    public Futbolista(String nombre, int edad, String posicion){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.posicion = posicion;
     }
 
-    // Impresion 
-	public static void main(String args[]) {
+    public Futbolista(){
+        nombre = "Maradona";
+        edad = 30;
+        posicion = "delantero";
+    }
 
-		System.out.println("El futbolista " + nombre + " tiene " + edad + ", y juega de "+ posicion);	
-	}
-	
-	//getters 
-	public  String getNombre(){
-		return nombre;
-	}
-	public  String getPosicion() {
-		return posicion;
-	}
-	public  int getEdad() {
-		return edad;
-	}
-	// Metodo jugarManos
-	public boolean  jugarConLasManos(){
-		return true;
-		}
-	
-	// Metodo compare
-	public boolean equals(Object a, Object b){
-			return false;
-		}
+    public boolean equals(Futbolista f){
+        if(this == f){
+            return true;
+        }
+        if(f == null) {
+            return false;
+        }
+        return false;
+    }
+
+    public abstract boolean jugarConLasManos();
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPosicion() {
+        return posicion;
+    }
+    @Override
+    public String toString() {
+        return "El futbolista " + nombre + " tiene " + edad + ", y juega de " + posicion;
+    }
+
 }
-
